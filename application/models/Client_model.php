@@ -5,9 +5,9 @@ class Client_model extends CI_Model {
   {
     $this->load->database();
   }
-//////////////_________________________________////////////////////////
-// Récupère les infos dans la BDD en fonction de l'ID _____///////////
-/////////////__________________________________//////////////////////
+//////////////_________________________________///////////////////
+// Récupère les infos dans la BDD en fonction de l'ID ///////////
+/////////////__________________________________/////////////////
   public function get_client(int $id = 0) {
     if ($id <= 0) {
       $query = $this->db->get('client');
@@ -20,5 +20,4 @@ class Client_model extends CI_Model {
 
 
 
-  
 }
