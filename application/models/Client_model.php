@@ -16,7 +16,25 @@ class Client_model extends CI_Model {
     $query = $this->db->get_where('client', array('idClient' => $id));
     return $query->row_array();
   }
-
+////////////////// NOUVELLE FONCTION //////////////////
+public function setClient($id = 0) {
+    $data = array(
+      'nomClient' => $this->input->post('nomClient'),
+      'numClient' => $this->input->post('numClient'),
+      'adresse' => $this->input->post('adresse'),
+      'numTel' => $this->input->post('numTel'),
+      'mail' => $this->input->post('mail'),
+    );
+    if ($id <= 0) {
+      // insert
+      $query = $this->db->insert('client', $data);
+      return $query;
+  }
+      // update
+      $this->db->where('idClient', $id);
+      $query = $this->db->update('client', $data);
+      return $query;
+}
 
 
 
