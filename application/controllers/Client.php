@@ -24,7 +24,7 @@ public function client($id)
     $data['client'] = $this->client_model->get_client($id);
     $data['title'] = $data['client']['nomClient'];
     $this->load->view('template/header', $data);
-    $this->load->view('clients/oneClient', $data); //////////// ^^
+    $this->load->view('client/oneClient', $data); //////////// ^^
     $this->load->view('template/footer');
 }
 ////////////////// NOUVELLE FONCTION //////////////////
@@ -47,7 +47,7 @@ public function create()
  
   {
     $this->load->view('template/header', $data);
-    $this->load->view('clients/create');          ////////////// ^^
+    $this->load->view('client/create');          ////////////// ^^
     $this->load->view('template/footer');
   }else {
   $this->client_model->setClient();
