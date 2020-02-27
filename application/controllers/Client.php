@@ -11,7 +11,7 @@ class Client extends CI_Controller {
 /////////////__________________________________/////////////////
 public function views() 
 {
-    $data['clients'] = $this->client_model->get_client();
+    $data['clients'] = $this->client_model->get_client(); 
     $data['title'] = 'liste des clients';
 
     $this->load->view('template/header', $data);
@@ -61,27 +61,22 @@ public function update($id)
       $this->load->library('form_validation');
 
       $data ['title'] = 'Créer un nouveau client';
-      //rajout
-      $data['client'] = $this->client_model->get_client($id);
+      $data ['client'] = $this->client_model->get_client($id);
+      
       $this->form_validation->set_rules('nomClient', 'Nom Client', 'required');
       $this->form_validation->set_rules('numClient', 'Num Client', 'required');
       $this->form_validation->set_rules('adresse', 'Adresse', 'required');
       $this->form_validation->set_rules('numTel', 'Num Tel', 'required');
       $this->form_validation->set_rules('mail', 'Mail', 'required');
-      // fin rajout
       // Si le formulaire n'est pas bon il doit réafficher la vue précédente
       if ($this->form_validation->run() === FALSE) 
   {
-
       $this->load->view('template/header', $data);
       $this->load->view('client/update', $data);
       $this->load->view('template/footer');
   } else {
-      // rajout
-      $this->client_model->setClient($id);
+      $this->client_model->update($id);
       $this->load->view('client/success');
-      // $this->news_model->udpdate($id);
-     
   }
 }
 }
