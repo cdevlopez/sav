@@ -54,15 +54,22 @@ public function create()
   $this->load->view('client/success');
   }
 }
+////////////////// NOUVELLE FONCTION //////////////////
 public function update($id) 
 {
       $this->load->helper('form');
       $this->load->library('form_validation');
 
       $data ['title'] = 'Créer un nouveau client';
-
-      $this->form_validation->set_rules('title', 'Title', 'required');
-      $this->form_validation->set_rules('text', 'Text', 'required');
+      //rajout
+      $data['client'] = $this->client_model->get_client($id);
+      $this->form_validation->set_rules('nomClient', 'Nom Client', 'required');
+      $this->form_validation->set_rules('numClient', 'Num Client', 'required');
+      $this->form_validation->set_rules('adresse', 'Adresse', 'required');
+      $this->form_validation->set_rules('numTel', 'Num Tel', 'required');
+      $this->form_validation->set_rules('mail', 'Mail', 'required');
+      // fin rajout
+      // Si le formulaire n'est pas bon il doit réafficher la vue précédente
       if ($this->form_validation->run() === FALSE) 
   {
 
@@ -70,8 +77,11 @@ public function update($id)
       $this->load->view('client/update', $data);
       $this->load->view('template/footer');
   } else {
-      $this->news_model->udpdate($id);
+      // rajout
+      $this->client_model->setClient($id);
       $this->load->view('client/success');
+      // $this->news_model->udpdate($id);
+     
   }
 }
 }
