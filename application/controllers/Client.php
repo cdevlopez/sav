@@ -41,18 +41,18 @@ public function create()
     $this->form_validation->set_rules('numTel', 'numTel', 'required');
     $this->form_validation->set_rules('mail', 'mail', 'required');
 
-    // condition qui servira à savoir si notre formulaire a été bien envoyé 
-  $data['title'] = "formulaire clients";
+      // condition qui servira à savoir si notre formulaire a été bien envoyé 
+      $data['title'] = "formulaire clients";
   if ($this->form_validation->run() === FALSE)
  
-  {
-    $this->load->view('template/header', $data);
-    $this->load->view('client/create');          
-    $this->load->view('template/footer');
-  }else {
-  $this->client_model->setClient();
-  $this->load->view('client/success');
-  }
+    {
+      $this->load->view('template/header', $data);
+      $this->load->view('client/create');          
+      $this->load->view('template/footer');
+    } else {
+      $this->client_model->setClient();
+      $this->load->view('client/success');
+    }
 }
 ////////////////// NOUVELLE FONCTION //////////////////
 public function update($id) 
@@ -69,12 +69,12 @@ public function update($id)
       $this->form_validation->set_rules('numTel', 'Num Tel', 'required');
       $this->form_validation->set_rules('mail', 'Mail', 'required');
       // Si le formulaire n'est pas bon il doit réafficher la vue précédente
-      if ($this->form_validation->run() === FALSE) 
+  if ($this->form_validation->run() === FALSE) 
   {
       $this->load->view('template/header', $data);
       $this->load->view('client/update', $data);
       $this->load->view('template/footer');
-  } else {
+  }   else {
       $this->client_model->update($id);
       $this->load->view('client/success');
   }
