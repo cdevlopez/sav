@@ -1,0 +1,1 @@
+<h2>Le formulaire a été traité avec succès !</h2>
