@@ -8,7 +8,7 @@ class Client_model extends CI_Model {
 //////////////_________________________________///////////////////
 // Récupère les infos dans la BDD en fonction de l'ID ///////////
 /////////////__________________________________/////////////////
-  public function get_client(int $id = 0) {
+  public function get_client($id = 0) {
     if ($id <= 0) {
       $query = $this->db->get('client');
       return $query->result_array();
@@ -16,6 +16,18 @@ class Client_model extends CI_Model {
     $query = $this->db->get_where('client', array('idClient' => $id));
     return $query->row_array();
   }
+////////////////// NOUVELLE FONCTION //////////////////
+// On créer une méthode qui sert à récupérer un client par son ID
+public function get_client_by_id($id = 0)
+{
+    if ($id === 0)
+    {
+        $query = $this->db->get('client');
+        return $query->result_array();
+    }
+    $query = $this->db->get_where('client', array('id' => $id));
+    return $query->row_array();
+}
 ////////////////// NOUVELLE FONCTION //////////////////
 public function setClient($id = 0) {
     $data = array(
@@ -35,7 +47,11 @@ public function setClient($id = 0) {
       $query = $this->db->update('client', $data);
       return $query;
 }
+////////////////// NOUVELLE FONCTION //////////////////
+public function deleteClient ($id = 0) {
 
-
+    $query = $this->db->delete('client', array('idClient' => $id));
+    return $query;
+}
 
 }

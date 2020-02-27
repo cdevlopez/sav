@@ -1,1 +1,1 @@
-<h2>Le formulaire a été traité avec succès !</h2>
+<h2>La demande a été traité avec succès !</h2>
