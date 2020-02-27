@@ -50,6 +50,7 @@ public function create()
       $this->load->view('client/create');          
       $this->load->view('template/footer');
     } else {
+      
       $this->client_model->setClient();
       $this->load->view('client/success');
     }
