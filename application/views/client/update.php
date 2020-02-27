@@ -1,6 +1,6 @@
 <h1> <?php echo $title; ?> </h1>
 <?php echo validation_errors();
-echo form_open('client/update/'.$client['idClient']); ?>
+echo form_open('client/update/'. $client['idClient']); ?>
 
     <label for="nomClient">Nom Client</label>
     <input type="input" name="nomClient" value="<?php echo $client['nomClient']; ?>" />

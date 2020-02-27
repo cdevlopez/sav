@@ -49,7 +49,6 @@ public function setClient($id = 0) {
 }
 ////////////////// NOUVELLE FONCTION //////////////////
 public function deleteClient ($id = 0) {
-
     $query = $this->db->delete('client', array('idClient' => $id));
     return $query;
 }

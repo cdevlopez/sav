@@ -62,7 +62,7 @@ public function update($id)
 
       $data ['title'] = 'Créer un nouveau client';
       $data ['client'] = $this->client_model->get_client($id);
-      
+
       $this->form_validation->set_rules('nomClient', 'Nom Client', 'required');
       $this->form_validation->set_rules('numClient', 'Num Client', 'required');
       $this->form_validation->set_rules('adresse', 'Adresse', 'required');
@@ -78,5 +78,11 @@ public function update($id)
       $this->client_model->update($id);
       $this->load->view('client/success');
   }
+}
+////////////////// NOUVELLE FONCTION //////////////////
+public function delete($id = 0) 
+{
+      $this->client_model->deleteClient($id);
+      $this->load->view('client/success');
 }
 }
